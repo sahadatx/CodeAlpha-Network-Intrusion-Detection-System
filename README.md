@@ -2,20 +2,20 @@
 
 <p align="center">
 
-![Python](https://img.shields.io/badge/Python-3.13+-blue)
-![Snort](https://img.shields.io/badge/Snort-3.12-red)
-![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-success)
-[![GitHub Actions](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml/badge.svg)](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml)
-![Version](https://img.shields.io/badge/Version-v1.0.0-orange)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+![Python](https://img.shields.io/badge/Python-3.13+-blue?style=for-the-badge&logo=python)
+![Snort](https://img.shields.io/badge/Snort-3.12-red?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-success?style=for-the-badge&logo=linux)
+[![GitHub Actions](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml/badge.svg?style=for-the-badge)](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml)
+![Version](https://img.shields.io/badge/Version-v1.0.0-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 </p>
 
-A professional **Network Intrusion Detection System (NIDS)** developed using **Snort 3** and **Python** for detecting suspicious network activities in real time.
+A professional **Network Intrusion Detection System (NIDS)** built using **Snort 3** and **Python** to monitor live network traffic and detect suspicious activities in real time.
 
-This project monitors live network traffic, applies **custom Snort detection rules**, captures security events, performs automated alert analysis, and generates professional reports in **TXT**, **CSV**, and **JSON** formats. It also provides a real-time dashboard that summarizes detected network events, top source and destination IP addresses, and alert statistics.
+The project uses custom Snort rules, analyzes security alerts, generates reports in **TXT**, **CSV**, and **JSON** formats, and includes automated testing with **GitHub Actions**.
 
-Developed as part of the **CodeAlpha Cyber Security Internship**, this project demonstrates practical knowledge of intrusion detection, rule development, packet inspection, log analysis, report generation, software testing, and continuous integration using **GitHub Actions**.
+Developed as part of the **CodeAlpha Cyber Security Internship** to demonstrate practical cybersecurity and network monitoring skills.
 
 ---
 
