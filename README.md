@@ -139,3 +139,262 @@ Demonstrates successful execution of automated testing through GitHub Actions Co
 ![GitHub Actions](screenshots/08-github-actions.png)
 
 ---
+
+# 📂 Project Structure
+
+The project follows a modular directory structure to separate Snort rules, analysis scripts, reports, automated tests, and documentation.
+
+```text
+CodeAlpha-Network-Intrusion-Detection-System/
+│
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml
+│
+├── logs/
+│   └── alerts.log
+│
+├── reports/
+│   ├── assets/
+│   ├── report.txt
+│   ├── report.csv
+│   ├── report.json
+│   └── test_report.html
+│
+├── rules/
+│   └── local.rules
+│
+├── screenshots/
+│   ├── 01-project-structure.png
+│   ├── 02-snort-version.png
+│   ├── 03-custom-rules.png
+│   ├── 04-icmp-detection.png
+│   ├── 05-http-tcp-syn-detection.png
+│   ├── 06-dashboard-analysis.png
+│   ├── 07-generated-report.png
+│   └── 08-github-actions.png
+│
+├── scripts/
+│   └── analyze_logs.py
+│
+├── tests/
+│   ├── test_analyzer.py
+│   ├── test_files.py
+│   └── test_reports.py
+│
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── VALIDATION.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+# ⚙️ Installation
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System.git
+
+cd CodeAlpha-Network-Intrusion-Detection-System
+```
+
+---
+
+## Create a Virtual Environment
+
+```bash
+python3 -m venv venv
+```
+
+Linux
+
+```bash
+source venv/bin/activate
+```
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install --upgrade pip
+
+pip install -r requirements.txt
+```
+
+---
+
+## Verify Snort Installation
+
+```bash
+snort -V
+```
+
+Example
+
+```text
+Snort++ 3.12.2.0
+Using DAQ version 3.0.24
+Using libpcap version 1.10.6
+Using OpenSSL 3.6.2
+```
+
+---
+
+# 🚀 Usage
+
+## Start Live Packet Monitoring
+
+```bash
+sudo snort \
+-c /etc/snort/snort.lua \
+-R rules/local.rules \
+-i wlan0 \
+-A alert_fast
+```
+
+Replace **wlan0** with your network interface if necessary.
+
+---
+
+## Generate Detection Reports
+
+After collecting alerts, analyze the generated log file.
+
+```bash
+python3 scripts/analyze_logs.py
+```
+
+The script automatically creates
+
+- report.txt
+- report.csv
+- report.json
+
+inside the **reports/** directory.
+
+---
+
+# 🛡️ Custom Detection Rules
+
+The IDS uses custom Snort rules to detect common network activities and potential security threats.
+
+| Rule | Protocol | Port | Purpose |
+|-------|----------|------|----------|
+| ICMP Detection | ICMP | Any | Detects Ping Requests |
+| HTTP Detection | TCP | 80 | Detects HTTP Connections |
+| SSH Detection | TCP | 22 | Detects SSH Connections |
+| FTP Detection | TCP | 21 | Detects FTP Connections |
+| TCP SYN Detection | TCP | Any | Detects Possible SYN Scan |
+
+---
+
+## Example Rule
+
+```snort
+alert tcp any any -> any any (
+    flags:S;
+    msg:"[CodeAlpha] Possible TCP SYN Scan";
+    sid:1000005;
+    rev:1;
+)
+```
+
+---
+
+## Detection Workflow
+
+```text
+Incoming Network Traffic
+            │
+            ▼
+      Snort Packet Capture
+            │
+            ▼
+    Apply Custom Detection Rules
+            │
+            ▼
+     Generate Security Alerts
+            │
+            ▼
+      Save alerts.log
+            │
+            ▼
+Python Log Analyzer
+            │
+            ▼
+Generate Dashboard & Reports
+```
+
+---
+
+# 📡 Live Packet Monitoring
+
+The system continuously monitors live network traffic using **Snort 3** and applies custom detection rules in real time.
+
+Whenever a rule matches incoming traffic, Snort immediately generates an alert that is stored in **logs/alerts.log** for further analysis.
+
+Detected events include:
+
+- ICMP Ping Requests
+- HTTP Connections
+- SSH Connections
+- FTP Connections
+- TCP SYN Scan Attempts
+
+---
+
+## Example Live Detection Output
+
+```text
+07/03-10:17:12
+[CodeAlpha] Possible TCP SYN Scan
+
+07/03-10:17:12
+[CodeAlpha] HTTP Traffic Detected
+
+07/03-10:17:25
+[CodeAlpha] Possible TCP SYN Scan
+```
+
+---
+
+## Monitoring Process
+
+```text
+Internet Traffic
+        │
+        ▼
+ Network Interface (wlan0)
+        │
+        ▼
+      Snort 3 Engine
+        │
+        ▼
+ Custom Detection Rules
+        │
+        ▼
+ Alert Generation
+        │
+        ▼
+ logs/alerts.log
+        │
+        ▼
+ Python Log Analyzer
+        │
+        ▼
+ Dashboard & Reports
+```
+
+---
+
