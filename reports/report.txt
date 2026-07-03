@@ -1,19 +1,11 @@
 CodeAlpha IDS Detection Report
 ========================================
 
-Total Alerts : 42
+Generated: 2026-07-03 06:58:35.693912
+
+Total Alerts: 42
 
 Alert Summary
 TCP SYN: 3
 HTTP: 9
 ICMP: 30
-
-Top Source IPs
-192.168.2.111 : 27
-8.8.8.8 : 15
-
-Top Destination IPs
-8.8.8.8 : 15
-192.168.2.111 : 15
-172.66.147.243 : 10
-20.42.72.131 : 2
