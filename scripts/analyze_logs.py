@@ -1,84 +1,124 @@
 #!/usr/bin/env python3
 
 import re
-from collections import Counter
+import csv
+import json
 from pathlib import Path
+from collections import Counter
 
 LOG_FILE = Path("logs/alerts.log")
+REPORT_DIR = Path("reports")
+
+REPORT_DIR.mkdir(exist_ok=True)
 
 
-def parse_logs():
+def analyze():
 
     if not LOG_FILE.exists():
-        print(f"[ERROR] {LOG_FILE} not found!")
+        print("Log file not found!")
         return
 
     total_alerts = 0
 
-    alert_types = Counter()
-    source_ips = Counter()
-    destination_ips = Counter()
+    alerts = Counter()
+    src_ips = Counter()
+    dst_ips = Counter()
 
     ip_pattern = re.compile(r'(\d+\.\d+\.\d+\.\d+)')
 
-    with LOG_FILE.open("r", encoding="utf-8", errors="ignore") as logfile:
+    with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
 
-        for line in logfile:
+        for line in file:
 
             if "[**]" not in line:
                 continue
 
             total_alerts += 1
 
-            # Alert Types
             if "ICMP Ping Detected" in line:
-                alert_types["ICMP"] += 1
+                alerts["ICMP"] += 1
 
             elif "HTTP Traffic Detected" in line:
-                alert_types["HTTP"] += 1
+                alerts["HTTP"] += 1
 
             elif "SSH Connection Detected" in line:
-                alert_types["SSH"] += 1
+                alerts["SSH"] += 1
 
             elif "FTP Connection Detected" in line:
-                alert_types["FTP"] += 1
+                alerts["FTP"] += 1
 
             elif "Possible TCP SYN Scan" in line:
-                alert_types["TCP SYN"] += 1
+                alerts["TCP SYN"] += 1
 
-            # Extract IPs
             ips = ip_pattern.findall(line)
 
             if len(ips) >= 2:
-                source_ips[ips[0]] += 1
-                destination_ips[ips[1]] += 1
+                src_ips[ips[0]] += 1
+                dst_ips[ips[1]] += 1
 
     print("=" * 50)
-    print("      CodeAlpha IDS Log Analyzer")
+    print(" CodeAlpha IDS Report Generator")
     print("=" * 50)
 
     print(f"\nTotal Alerts : {total_alerts}\n")
 
     print("Alert Summary")
-    print("-" * 50)
 
-    for alert, count in alert_types.items():
-        print(f"{alert:<15}: {count}")
+    for k, v in alerts.items():
+        print(f"{k:<15}: {v}")
 
-    print("\nTop Source IPs")
-    print("-" * 50)
+    # ---------------- TXT ----------------
 
-    for ip, count in source_ips.most_common(5):
-        print(f"{ip:<20}{count}")
+    with open(REPORT_DIR / "report.txt", "w") as txt:
 
-    print("\nTop Destination IPs")
-    print("-" * 50)
+        txt.write("CodeAlpha IDS Detection Report\n")
+        txt.write("=" * 40 + "\n\n")
 
-    for ip, count in destination_ips.most_common(5):
-        print(f"{ip:<20}{count}")
+        txt.write(f"Total Alerts : {total_alerts}\n\n")
 
-    print("\nAnalysis Complete")
+        txt.write("Alert Summary\n")
+
+        for k, v in alerts.items():
+            txt.write(f"{k}: {v}\n")
+
+        txt.write("\nTop Source IPs\n")
+
+        for ip, count in src_ips.most_common(5):
+            txt.write(f"{ip} : {count}\n")
+
+        txt.write("\nTop Destination IPs\n")
+
+        for ip, count in dst_ips.most_common(5):
+            txt.write(f"{ip} : {count}\n")
+
+    # ---------------- CSV ----------------
+
+    with open(REPORT_DIR / "report.csv", "w", newline="") as csvfile:
+
+        writer = csv.writer(csvfile)
+
+        writer.writerow(["Alert Type", "Count"])
+
+        for k, v in alerts.items():
+            writer.writerow([k, v])
+
+    # ---------------- JSON ----------------
+
+    data = {
+        "total_alerts": total_alerts,
+        "alert_summary": dict(alerts),
+        "top_source_ips": dict(src_ips),
+        "top_destination_ips": dict(dst_ips)
+    }
+
+    with open(REPORT_DIR / "report.json", "w") as jsonfile:
+        json.dump(data, jsonfile, indent=4)
+
+    print("\nReports Generated Successfully")
+    print("reports/report.txt")
+    print("reports/report.csv")
+    print("reports/report.json")
 
 
 if __name__ == "__main__":
-    parse_logs()
+    analyze()
