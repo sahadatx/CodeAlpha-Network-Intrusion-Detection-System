@@ -5,7 +5,7 @@
 ![Python](https://img.shields.io/badge/Python-3.13+-blue)
 ![Snort](https://img.shields.io/badge/Snort-3.12-red)
 ![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-success)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Passing-brightgreen)
+[![GitHub Actions](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml/badge.svg)](https://github.com/sahadatx/CodeAlpha-Network-Intrusion-Detection-System/actions/workflows/python-tests.yml)
 ![Version](https://img.shields.io/badge/Version-v1.0.0-orange)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
@@ -70,23 +70,17 @@ The following screenshots demonstrate the implementation and functionality of th
 
 ## 1️⃣ Project Structure
 
-Shows the complete project directory structure including Snort rules, reports, scripts, tests, GitHub Actions workflow, and supporting files.
-
 ![Project Structure](screenshots/01-project-structure.png)
 
 ---
 
 ## 2️⃣ Snort Version
 
-Displays the installed Snort 3 version and runtime environment used for the project.
-
 ![Snort Version](screenshots/02-snort-version.png)
 
 ---
 
 ## 3️⃣ Custom Detection Rules
-
-Shows the custom Snort detection rules implemented for identifying various network activities.
 
 **Implemented Rules**
 
@@ -102,15 +96,11 @@ Shows the custom Snort detection rules implemented for identifying various netwo
 
 ## 4️⃣ ICMP Detection
 
-Demonstrates successful detection of ICMP (Ping) traffic generated during live packet monitoring.
-
 ![ICMP Detection](screenshots/04-icmp-detection.png)
 
 ---
 
 ## 5️⃣ HTTP & TCP SYN Detection
-
-Shows simultaneous detection of HTTP traffic and TCP SYN scan attempts using custom Snort rules.
 
 ![HTTP & TCP SYN Detection](screenshots/05-http-tcp-syn-detection.png)
 
@@ -118,23 +108,17 @@ Shows simultaneous detection of HTTP traffic and TCP SYN scan attempts using cus
 
 ## 6️⃣ Dashboard & Alert Analysis
 
-Displays the automatically generated dashboard summarizing intrusion detection results, alert counts, and network statistics.
-
 ![Dashboard & Alert Analysis](screenshots/06-dashboard-analysis.png)
 
 ---
 
 ## 7️⃣ Generated Report
 
-Illustrates the professionally generated detection report containing alert summaries, source/destination IPs, and analysis results.
-
 ![Generated Report](screenshots/07-generated-report.png)
 
 ---
 
 ## 8️⃣ GitHub Actions (CI/CD)
-
-Demonstrates successful execution of automated testing through GitHub Actions Continuous Integration.
 
 ![GitHub Actions](screenshots/08-github-actions.png)
 
@@ -354,49 +338,6 @@ Detected events include:
 
 ---
 
-## Example Live Detection Output
-
-```text
-07/03-10:17:12
-[CodeAlpha] Possible TCP SYN Scan
-
-07/03-10:17:12
-[CodeAlpha] HTTP Traffic Detected
-
-07/03-10:17:25
-[CodeAlpha] Possible TCP SYN Scan
-```
-
----
-
-## Monitoring Process
-
-```text
-Internet Traffic
-        │
-        ▼
- Network Interface (wlan0)
-        │
-        ▼
-      Snort 3 Engine
-        │
-        ▼
- Custom Detection Rules
-        │
-        ▼
- Alert Generation
-        │
-        ▼
- logs/alerts.log
-        │
-        ▼
- Python Log Analyzer
-        │
-        ▼
- Dashboard & Reports
-```
-
----
 
 # 📊 Dashboard & Alert Analysis
 
@@ -425,54 +366,21 @@ The dashboard includes:
 
 ```text
 ============================================================
-                CodeAlpha IDS Dashboard
+CodeAlpha IDS Dashboard
 ============================================================
 
-Analysis Time : 2026-07-03 10:28:35
-Log File      : logs/alerts.log
-Total Alerts  : 42
+Total Alerts : 42
 
-------------------------------------------------------------
 Alert Summary
-------------------------------------------------------------
 
-TCP SYN       : 3
-HTTP          : 9
-ICMP          : 30
+TCP SYN : 3
+HTTP    : 9
+ICMP    : 30
 
-------------------------------------------------------------
-Top Source IPs
-------------------------------------------------------------
-
-192.168.2.111        27
-8.8.8.8              15
-
-------------------------------------------------------------
-Top Destination IPs
-------------------------------------------------------------
-
-8.8.8.8              15
-192.168.2.111        15
-172.66.147.243       10
-20.42.72.131          2
-
-------------------------------------------------------------
 Most Common Alert
-------------------------------------------------------------
 
 ICMP (30 alerts)
 
-------------------------------------------------------------
-Generated Reports
-------------------------------------------------------------
-
-✓ report.txt
-✓ report.csv
-✓ report.json
-
-============================================================
-Dashboard Complete
-============================================================
 ```
 
 ---
@@ -507,39 +415,6 @@ It includes:
 
 ---
 
-## CSV Report
-
-The CSV report stores alert statistics in spreadsheet format for further processing using Microsoft Excel, LibreOffice Calc, or Google Sheets.
-
-Example
-
-```csv
-Alert Type,Count
-ICMP,30
-HTTP,9
-TCP SYN,3
-```
-
----
-
-## JSON Report
-
-The JSON report stores structured detection data that can easily be integrated into automation scripts or external applications.
-
-Example
-
-```json
-{
-    "total_alerts": 42,
-    "alerts": {
-        "ICMP": 30,
-        "HTTP": 9,
-        "TCP SYN": 3
-    }
-}
-```
-
----
 
 # 🧪 Automated Testing
 
@@ -583,21 +458,6 @@ tests/test_reports.py ......... PASSED
 
 ---
 
-## GitHub Actions Continuous Integration
-
-Every push to the repository automatically triggers the GitHub Actions workflow.
-
-The workflow performs:
-
-- Repository Checkout
-- Python Environment Setup
-- Dependency Installation
-- Automated Testing
-- Build Verification
-
-This ensures that every commit is automatically validated before deployment.
-
----
 
 # 💻 Technologies Used
 
