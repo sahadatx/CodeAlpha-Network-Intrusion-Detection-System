@@ -1,0 +1,40 @@
+#############################################
+# CodeAlpha - Network IDS
+# Custom Local Rules
+#############################################
+
+# ICMP Detection (Ping)
+alert icmp any any -> any any (
+    msg:"[CodeAlpha] ICMP Ping Detected";
+    sid:1000001;
+    rev:1;
+)
+
+# HTTP Detection
+alert tcp any any -> any 80 (
+    msg:"[CodeAlpha] HTTP Traffic Detected";
+    sid:1000002;
+    rev:1;
+)
+
+# SSH Detection
+alert tcp any any -> any 22 (
+    msg:"[CodeAlpha] SSH Connection Detected";
+    sid:1000003;
+    rev:1;
+)
+
+# FTP Detection
+alert tcp any any -> any 21 (
+    msg:"[CodeAlpha] FTP Connection Detected";
+    sid:1000004;
+    rev:1;
+)
+
+# TCP SYN Scan Detection
+alert tcp any any -> any any (
+    flags:S;
+    msg:"[CodeAlpha] Possible TCP SYN Scan";
+    sid:1000005;
+    rev:1;
+)
