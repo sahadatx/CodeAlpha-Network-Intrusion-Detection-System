@@ -1,0 +1,4 @@
+Alert Type,Count
+TCP SYN,3
+HTTP,9
+ICMP,30

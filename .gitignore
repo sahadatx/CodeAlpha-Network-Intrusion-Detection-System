@@ -5,14 +5,9 @@ __pycache__/
 # Virtual Environment
 venv/
 
-# Logs
+# Runtime Logs
 logs/*.log
 logs/*.json
-
-# Reports
-reports/*.csv
-reports/*.json
-reports/*.txt
 
 # VS Code
 .vscode/
