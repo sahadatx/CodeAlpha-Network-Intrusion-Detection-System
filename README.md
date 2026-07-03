@@ -398,3 +398,298 @@ Internet Traffic
 
 ---
 
+# 📊 Dashboard & Alert Analysis
+
+The Python log analyzer automatically processes **Snort alert logs** and generates a professional dashboard that summarizes the detected network events.
+
+The dashboard provides a quick overview of intrusion attempts, alert statistics, and network activity.
+
+---
+
+## Dashboard Overview
+
+The dashboard includes:
+
+- Analysis Timestamp
+- Log File Information
+- Total Alerts Detected
+- Alert Summary
+- Top Source IP Addresses
+- Top Destination IP Addresses
+- Most Common Alert
+- Generated Report Status
+
+---
+
+## Example Dashboard Output
+
+```text
+============================================================
+                CodeAlpha IDS Dashboard
+============================================================
+
+Analysis Time : 2026-07-03 10:28:35
+Log File      : logs/alerts.log
+Total Alerts  : 42
+
+------------------------------------------------------------
+Alert Summary
+------------------------------------------------------------
+
+TCP SYN       : 3
+HTTP          : 9
+ICMP          : 30
+
+------------------------------------------------------------
+Top Source IPs
+------------------------------------------------------------
+
+192.168.2.111        27
+8.8.8.8              15
+
+------------------------------------------------------------
+Top Destination IPs
+------------------------------------------------------------
+
+8.8.8.8              15
+192.168.2.111        15
+172.66.147.243       10
+20.42.72.131          2
+
+------------------------------------------------------------
+Most Common Alert
+------------------------------------------------------------
+
+ICMP (30 alerts)
+
+------------------------------------------------------------
+Generated Reports
+------------------------------------------------------------
+
+✓ report.txt
+✓ report.csv
+✓ report.json
+
+============================================================
+Dashboard Complete
+============================================================
+```
+
+---
+
+# 📄 Generated Reports
+
+After processing **logs/alerts.log**, the analyzer automatically generates reports in multiple formats for documentation and further analysis.
+
+Generated Files
+
+```text
+reports/
+├── report.txt
+├── report.csv
+└── report.json
+```
+
+---
+
+## TXT Report
+
+The TXT report provides a human-readable summary of the detected alerts.
+
+It includes:
+
+- Report Generation Time
+- Log File Name
+- Total Alerts
+- Alert Summary
+- Top Source IP Addresses
+- Top Destination IP Addresses
+
+---
+
+## CSV Report
+
+The CSV report stores alert statistics in spreadsheet format for further processing using Microsoft Excel, LibreOffice Calc, or Google Sheets.
+
+Example
+
+```csv
+Alert Type,Count
+ICMP,30
+HTTP,9
+TCP SYN,3
+```
+
+---
+
+## JSON Report
+
+The JSON report stores structured detection data that can easily be integrated into automation scripts or external applications.
+
+Example
+
+```json
+{
+    "total_alerts": 42,
+    "alerts": {
+        "ICMP": 30,
+        "HTTP": 9,
+        "TCP SYN": 3
+    }
+}
+```
+
+---
+
+# 🧪 Automated Testing
+
+The project includes automated tests developed using **Pytest** to verify the functionality of the IDS log analyzer.
+
+The test suite validates:
+
+- Python Analyzer
+- Report Generation
+- Project Structure
+- Detection Rules
+- Generated Files
+
+---
+
+## Run Tests
+
+```bash
+python -m pytest -v
+```
+
+---
+
+## Example Output
+
+```text
+============================= test session starts =============================
+
+collected 7 items
+
+tests/test_analyzer.py ........ PASSED
+tests/test_files.py ........... PASSED
+tests/test_reports.py ......... PASSED
+
+==============================
+
+7 passed in 0.04s
+
+==============================
+```
+
+---
+
+## GitHub Actions Continuous Integration
+
+Every push to the repository automatically triggers the GitHub Actions workflow.
+
+The workflow performs:
+
+- Repository Checkout
+- Python Environment Setup
+- Dependency Installation
+- Automated Testing
+- Build Verification
+
+This ensures that every commit is automatically validated before deployment.
+
+---
+
+# 💻 Technologies Used
+
+| Technology | Purpose |
+|------------|----------|
+| Python 3.13 | Programming Language |
+| Snort 3 | Network Intrusion Detection |
+| Kali Linux | Development Platform |
+| Pytest | Automated Testing |
+| GitHub Actions | Continuous Integration |
+| Git | Version Control |
+| GitHub | Source Code Hosting |
+| CSV | Report Generation |
+| JSON | Structured Data Export |
+| Regular Expressions | Log Parsing |
+
+---
+
+# 🔮 Future Improvements
+
+The following enhancements are planned for future releases:
+
+- 📧 Email Alert Notifications
+- 🌐 Web-based Dashboard
+- 📊 Interactive Charts
+- 🌍 Geo-IP Location Detection
+- 🧠 Threat Intelligence Integration
+- 📡 Multi-Interface Monitoring
+- ☁️ Cloud Report Storage
+- 🐳 Docker Deployment
+- 📈 Real-Time Analytics
+- 🔐 Advanced Detection Rules
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+If you would like to improve this project:
+
+1. Fork the repository.
+2. Create a new feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
+
+Please ensure that:
+
+- Code follows PEP 8 guidelines.
+- New functionality includes appropriate tests.
+- Documentation is updated whenever necessary.
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this software under the terms of the MIT License.
+
+For more information, see the **LICENSE** file.
+
+---
+
+# 👨‍💻 Author
+
+**Sahadat Hossain**
+
+Cybersecurity Enthusiast
+
+- 📧 Email: pentester.sahadathossain@gmail.com
+- 💼 LinkedIn: https://www.linkedin.com/in/pentester-sahadat-hossain/
+- 🐙 GitHub: https://github.com/sahadatx
+
+---
+
+# ⭐ Support
+
+If you found this project useful:
+
+- ⭐ Star this repository
+- 🍴 Fork the project
+- 🛠️ Contribute improvements
+- 📢 Share it with others
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Sahadat Hossain**
+
+⭐ If you found this project helpful, please consider giving it a Star.
+
+</div>
