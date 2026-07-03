@@ -21,25 +21,25 @@ Developed as part of the **CodeAlpha Cyber Security Internship** to demonstrate 
 
 # 📑 Table of Contents
 
-- [Features](#-features)
-- [Screenshots](#-screenshots)
-- [Project Structure](#-project-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Custom Detection Rules](#-custom-detection-rules)
-- [Live Packet Monitoring](#-live-packet-monitoring)
-- [Dashboard & Alert Analysis](#-dashboard--alert-analysis)
-- [Generated Reports](#-generated-reports)
-- [Automated Testing](#-automated-testing)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Custom Detection Rules](#custom-detection-rules)
+- [Live Packet Monitoring](#live-packet-monitoring)
+- [Dashboard and Alert Analysis](#dashboard-and-alert-analysis)
+- [Generated Reports](#generated-reports)
+- [Automated Testing](#automated-testing)
 - [Technologies Used](#technologies-used)
-- [Future Improvements](#-future-improvements)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 - [Author](#author)
 
 ---
 
-# 🚀 Features
+# Features
 
 | Feature | Status |
 |----------|:------:|
@@ -62,7 +62,7 @@ Developed as part of the **CodeAlpha Cyber Security Internship** to demonstrate 
 
 ---
 
-# 📸 Screenshots
+# Screenshots
 
 The following screenshots demonstrate the implementation and functionality of the Network Intrusion Detection System.
 
@@ -116,7 +116,7 @@ The following screenshots demonstrate the implementation and functionality of th
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 The project follows a modular directory structure to separate Snort rules, analysis scripts, reports, automated tests, and documentation.
 
@@ -168,7 +168,7 @@ CodeAlpha-Network-Intrusion-Detection-System/
 
 ---
 
-# ⚙️ Installation
+# Installation
 
 ## Clone the Repository
 
@@ -227,7 +227,7 @@ Using OpenSSL 3.6.2
 
 ---
 
-# 🚀 Usage
+# Usage
 
 ## Start Live Packet Monitoring
 
@@ -261,7 +261,7 @@ inside the **reports/** directory.
 
 ---
 
-# 🛡️ Custom Detection Rules
+# Custom Detection Rules
 
 The IDS uses custom Snort rules to detect common network activities and potential security threats.
 
@@ -314,7 +314,7 @@ Generate Dashboard & Reports
 
 ---
 
-# 📡 Live Packet Monitoring
+# Live Packet Monitoring
 
 The system continuously monitors live network traffic using **Snort 3** and applies custom detection rules in real time.
 
@@ -331,7 +331,7 @@ Detected events include:
 ---
 
 
-# 📊 Dashboard & Alert Analysis
+# Dashboard & Alert Analysis
 
 The Python log analyzer automatically processes **Snort alert logs** and generates a professional dashboard that summarizes the detected network events.
 
@@ -377,7 +377,7 @@ ICMP (30 alerts)
 
 ---
 
-# 📄 Generated Reports
+# Generated Reports
 
 After processing **logs/alerts.log**, the analyzer automatically generates reports in multiple formats for documentation and further analysis.
 
@@ -408,7 +408,7 @@ It includes:
 ---
 
 
-# 🧪 Automated Testing
+# Automated Testing
 
 The project includes automated tests developed using **Pytest** to verify the functionality of the IDS log analyzer.
 
@@ -451,7 +451,7 @@ tests/test_reports.py ......... PASSED
 ---
 
 
-# 💻 Technologies Used
+# Technologies Used
 
 | Technology | Purpose |
 |------------|----------|
@@ -468,7 +468,7 @@ tests/test_reports.py ......... PASSED
 
 ---
 
-# 🔮 Future Improvements
+# Future Improvements
 
 The following enhancements are planned for future releases:
 
@@ -485,7 +485,7 @@ The following enhancements are planned for future releases:
 
 ---
 
-# 🤝 Contributing
+# Contributing
 
 Contributions are welcome!
 
@@ -505,7 +505,7 @@ Please ensure that:
 
 ---
 
-# 📄 License
+# License
 
 This project is licensed under the **MIT License**.
 
@@ -515,7 +515,7 @@ For more information, see the **LICENSE** file.
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Sahadat Hossain**
 
@@ -527,7 +527,7 @@ Cybersecurity Enthusiast
 
 ---
 
-# ⭐ Support
+# Support
 
 If you found this project useful:
 
