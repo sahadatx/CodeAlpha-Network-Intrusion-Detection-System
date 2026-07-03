@@ -82,14 +82,6 @@ The following screenshots demonstrate the implementation and functionality of th
 
 ## 3️⃣ Custom Detection Rules
 
-**Implemented Rules**
-
-- ICMP Ping Detection
-- HTTP Traffic Detection
-- SSH Connection Detection
-- FTP Connection Detection
-- TCP SYN Scan Detection
-
 ![Custom Rules](screenshots/03-custom-rules.png)
 
 ---
