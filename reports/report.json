@@ -1,7 +1,8 @@
 {
-    "generated": "2026-07-03 07:09:07.972437",
+    "generated": "2026-07-03 10:33:20",
+    "log_file": "logs/alerts.log",
     "total_alerts": 42,
-    "alerts": {
+    "alert_summary": {
         "TCP SYN": 3,
         "HTTP": 9,
         "ICMP": 30

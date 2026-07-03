@@ -6,15 +6,23 @@ import json
 from pathlib import Path
 from collections import Counter
 from datetime import datetime
-from colorama import Fore, Style, init
+from colorama import Fore, init
 
 init(autoreset=True)
+
+# ============================================================
+# Configuration
+# ============================================================
 
 LOG_FILE = Path("logs/alerts.log")
 REPORT_DIR = Path("reports")
 
 REPORT_DIR.mkdir(exist_ok=True)
 
+
+# ============================================================
+# Analyzer
+# ============================================================
 
 def analyze():
 
@@ -60,19 +68,42 @@ def analyze():
                 src_ips[ips[0]] += 1
                 dst_ips[ips[1]] += 1
 
-    # Generate Reports
+    analysis_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # ============================================================
+    # TXT REPORT
+    # ============================================================
 
     with open(REPORT_DIR / "report.txt", "w") as txt:
 
         txt.write("CodeAlpha IDS Detection Report\n")
-        txt.write("=" * 40 + "\n\n")
-        txt.write(f"Generated: {datetime.now()}\n\n")
-        txt.write(f"Total Alerts: {total_alerts}\n\n")
+        txt.write("=" * 50 + "\n\n")
+
+        txt.write(f"Generated     : {analysis_time}\n")
+        txt.write(f"Log File      : {LOG_FILE}\n")
+        txt.write(f"Total Alerts  : {total_alerts}\n\n")
 
         txt.write("Alert Summary\n")
+        txt.write("-" * 30 + "\n")
 
         for k, v in alerts.items():
-            txt.write(f"{k}: {v}\n")
+            txt.write(f"{k:<15}: {v}\n")
+
+        txt.write("\nTop Source IPs\n")
+        txt.write("-" * 30 + "\n")
+
+        for ip, count in src_ips.most_common(5):
+            txt.write(f"{ip:<20}{count}\n")
+
+        txt.write("\nTop Destination IPs\n")
+        txt.write("-" * 30 + "\n")
+
+        for ip, count in dst_ips.most_common(5):
+            txt.write(f"{ip:<20}{count}\n")
+
+    # ============================================================
+    # CSV REPORT
+    # ============================================================
 
     with open(REPORT_DIR / "report.csv", "w", newline="") as csvfile:
 
@@ -83,23 +114,42 @@ def analyze():
         for k, v in alerts.items():
             writer.writerow([k, v])
 
+    # ============================================================
+    # JSON REPORT
+    # ============================================================
+
     with open(REPORT_DIR / "report.json", "w") as jsonfile:
 
-        json.dump({
-            "generated": str(datetime.now()),
-            "total_alerts": total_alerts,
-            "alerts": dict(alerts),
-            "top_source_ips": dict(src_ips),
-            "top_destination_ips": dict(dst_ips)
-        }, jsonfile, indent=4)
+        json.dump(
+            {
+                "generated": analysis_time,
+                "log_file": str(LOG_FILE),
+                "total_alerts": total_alerts,
+                "alert_summary": dict(alerts),
+                "top_source_ips": dict(src_ips),
+                "top_destination_ips": dict(dst_ips),
+            },
+            jsonfile,
+            indent=4,
+        )
 
-    # Dashboard
+    # ============================================================
+    # DASHBOARD
+    # ============================================================
 
     print(Fore.CYAN + "=" * 60)
-    print(Fore.GREEN + "        CodeAlpha Network IDS Dashboard")
+    print(Fore.GREEN + " CodeAlpha - Network Intrusion Detection System")
     print(Fore.CYAN + "=" * 60)
 
-    print(f"\nAnalysis Time : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(Fore.GREEN + "\nDashboard & Alert Analysis")
+    print("-" * 60)
+
+    print(Fore.CYAN + "=" * 60)
+    print(Fore.GREEN + " CodeAlpha IDS Dashboard")
+    print(Fore.CYAN + "=" * 60)
+
+    print(f"\nAnalysis Time : {analysis_time}")
+    print(f"Log File      : {LOG_FILE}")
     print(f"Total Alerts  : {total_alerts}")
 
     print("\nAlert Summary")
@@ -121,13 +171,14 @@ def analyze():
         print(f"{ip:<20}{count}")
 
     if alerts:
+
         top_alert = alerts.most_common(1)[0]
 
         print("\nMost Common Alert")
         print("-" * 60)
         print(f"{top_alert[0]} ({top_alert[1]} alerts)")
 
-    print("\nReport Status")
+    print("\nGenerated Reports")
     print("-" * 60)
 
     print(Fore.GREEN + "✓ report.txt")
@@ -138,6 +189,10 @@ def analyze():
     print(Fore.GREEN + "Dashboard Complete")
     print(Fore.CYAN + "=" * 60)
 
+
+# ============================================================
+# Main
+# ============================================================
 
 if __name__ == "__main__":
     analyze()

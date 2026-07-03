@@ -1,7 +1,7 @@
-#############################################
-# CodeAlpha - Network IDS
-# Custom Local Rules
-#############################################
+############################################################
+# CodeAlpha - Network Intrusion Detection System
+# Snort 3 Custom Detection Rules
+############################################################
 
 # ICMP Detection (Ping)
 alert icmp any any -> any any (
